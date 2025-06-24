@@ -35,7 +35,54 @@ Un assistant vocal sécurisé et intelligent pour PC, conçu pour fonctionner pr
 - **Navigation** dans les dossiers
 - **Commandes personnalisées** apprises
 
-## 🚀 Installation
+## 🖥️ Installation Multiplateforme (Windows, Mac, Linux)
+
+### 1. Cloner le dépôt
+```bash
+git clone https://github.com/hassan312-god/Sentinel.git
+cd Sentinel
+```
+
+### 2. Installation automatique
+
+#### Sous Linux/Mac
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+#### Sous Windows
+Double-cliquez sur `install.bat` ou dans un terminal :
+```bat
+install.bat
+```
+
+### 3. Lancement
+- **Backend :**
+  - Linux/Mac : `source .venv/bin/activate && python main.py`
+  - Windows : `.venv\Scripts\activate && python main.py`
+- **Frontend (UI React) :**
+  - `cd web-ui && npm start`
+
+### 4. Dépendances système (Mac/Linux)
+- Pour la reconnaissance vocale locale, installez PortAudio :
+  - **Debian/Ubuntu :** `sudo apt install portaudio19-dev`
+  - **Mac :** `brew install portaudio`
+
+## 🔄 Mise à jour automatique via GitHub
+
+Pour mettre à jour votre assistant avec la dernière version du dépôt :
+
+```bash
+python core/auto_update.py
+```
+
+Ou faites simplement :
+```bash
+git pull
+```
+
+## 🚀 Installation Manuelle
 
 ### Prérequis
 - Python 3.8+
@@ -47,8 +94,8 @@ Un assistant vocal sécurisé et intelligent pour PC, conçu pour fonctionner pr
 
 ```bash
 # Cloner le repository
-git clone https://github.com/votre-username/sentinel-voice.git
-cd sentinel-voice
+git clone https://github.com/hassan312-god/Sentinel.git
+cd Sentinel
 
 # Installer les dépendances Python
 pip install -r requirements.txt
@@ -256,55 +303,6 @@ Pour toute question ou problème :
 - Consulter la documentation dans `/docs`
 - Vérifier les logs dans `/logs`
 
-## 🖥️ Installation Multiplateforme (Windows, Mac, Linux)
-
-### 1. Cloner le dépôt
-```bash
-git clone https://github.com/hassan312-god/Sentinel.git
-cd Sentinel
-```
-
-### 2. Installation automatique
-
-#### Sous Linux/Mac
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-#### Sous Windows
-Double-cliquez sur `install.bat` ou dans un terminal :
-```bat
-install.bat
-```
-
-### 3. Lancement
-- **Backend :**
-  - Linux/Mac : `source .venv/bin/activate && python main.py`
-  - Windows : `.venv\Scripts\activate && python main.py`
-- **Frontend (UI React) :**
-  - `cd web-ui && npm start`
-
-### 4. Dépendances système (Mac/Linux)
-- Pour la reconnaissance vocale locale, installez PortAudio :
-  - **Debian/Ubuntu :** `sudo apt install portaudio19-dev`
-  - **Mac :** `brew install portaudio`
-
-## 🔄 Mise à jour automatique via GitHub
-
-Pour mettre à jour votre assistant avec la dernière version du dépôt :
-
-```bash
-python core/auto_update.py
-```
-
-Ou faites simplement :
-```bash
-git pull
-```
-
 ---
 
-Pour toute question, consultez la documentation ou ouvrez une issue sur [le dépôt GitHub](https://github.com/hassan312-god/Sentinel.git).
-
-**Sentinel Voice** - Votre assistant vocal intelligent et sécurisé 🛡️ 
+**Sentinel Voice** - Votre assistant vocal intelligent et sécurisé 🛡️
