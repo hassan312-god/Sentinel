@@ -1,0 +1,86 @@
+[
+  {
+    "phrase": "ouvre le bloc notes",
+    "action": "notepad"
+  },
+  {
+    "phrase": "ouvre le bloc-notes",
+    "action": "notepad"
+  },
+  {
+    "phrase": "ouvre notepad",
+    "action": "notepad"
+  },
+  {
+    "phrase": "ouvre la calculatrice",
+    "action": "calc"
+  },
+  {
+    "phrase": "ouvre calc",
+    "action": "calc"
+  },
+  {
+    "phrase": "ouvre paint",
+    "action": "mspaint"
+  },
+  {
+    "phrase": "ouvre l'explorateur",
+    "action": "explorer"
+  },
+  {
+    "phrase": "ouvre explorer",
+    "action": "explorer"
+  },
+  {
+    "phrase": "ouvre word",
+    "action": "winword"
+  },
+  {
+    "phrase": "ouvre excel",
+    "action": "excel"
+  },
+  {
+    "phrase": "ouvre chrome",
+    "action": "chrome"
+  },
+  {
+    "phrase": "ouvre firefox",
+    "action": "firefox"
+  },
+  {
+    "phrase": "ouvre edge",
+    "action": "msedge"
+  },
+  {
+    "phrase": "ouvre youtube",
+    "action": "youtube"
+  },
+  {
+    "phrase": "ouvre gmail",
+    "action": "gmail"
+  },
+  {
+    "phrase": "ouvre les actualités",
+    "action": "news"
+  },
+  {
+    "phrase": "ouvre la météo",
+    "action": "weather_paris"
+  },
+  {
+    "phrase": "éteins l'ordinateur",
+    "action": "shutdown"
+  },
+  {
+    "phrase": "redémarre l'ordinateur",
+    "action": "reboot"
+  },
+  {
+    "phrase": "verrouille la session",
+    "action": "lock"
+  },
+  {
+    "phrase": "verrouille l'écran",
+    "action": "lock"
+  }
+] 

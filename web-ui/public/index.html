@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/assets/icons/favicon.ico" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta name="description" content="Sentinel Voice - Assistant vocal intelligent et sécurisé pour PC" />
+    <meta name="keywords" content="assistant vocal, reconnaissance vocale, sécurité, PC, français" />
+    <meta name="author" content="Sentinel Voice Team" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sentinel-voice.com/" />
+    <meta property="og:title" content="Sentinel Voice - Assistant Vocal Intelligent" />
+    <meta property="og:description" content="Assistant vocal sécurisé et intelligent pour votre PC" />
+    <meta property="og:image" content="%PUBLIC_URL%/assets/icons/sentinel-logo.ico" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sentinel-voice.com/" />
+    <meta property="twitter:title" content="Sentinel Voice - Assistant Vocal Intelligent" />
+    <meta property="twitter:description" content="Assistant vocal sécurisé et intelligent pour votre PC" />
+    <meta property="twitter:image" content="%PUBLIC_URL%/assets/icons/sentinel-logo.ico" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/assets/icons/sentinel-logo.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Préchargement des polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Sentinel Voice - Assistant Vocal Intelligent</title>
+    
+    <style>
+      /* Styles de chargement */
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow-x: hidden;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+      }
+
+      /* Animation de chargement */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+
+      .loading-logo {
+        width: 80px;
+        height: 80px;
+        animation: pulse 2s infinite;
+      }
+
+      .loading-text {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 1rem;
+        opacity: 0.8;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Scrollbar personnalisée */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 107, 53, 0.5);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 107, 53, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>Vous devez activer JavaScript pour utiliser Sentinel Voice.</noscript>
+    <div id="root">
+      <div class="loading">
+        <svg class="loading-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#E55A2B;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          
+          <circle cx="24" cy="24" r="22" fill="url(#loadingGradient)"/>
+          <path d="M24 8L32 12V20C32 26.627 28.627 32 24 32C19.373 32 16 26.627 16 20V12L24 8Z" 
+                fill="white" opacity="0.9"/>
+          <rect x="22" y="16" width="4" height="8" rx="2" fill="#FF6B35"/>
+          <circle cx="24" cy="26" r="3" fill="#FF6B35"/>
+          <circle cx="24" cy="12" r="2" fill="#27AE60"/>
+        </svg>
+        <div class="loading-text">Chargement de Sentinel Voice...</div>
+      </div>
+    </div>
+  </body>
+</html> 

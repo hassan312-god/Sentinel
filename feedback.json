@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2025-06-24T22:21:34.925777",
+    "user_input": "ouvre le bloc-notes",
+    "assistant_response": "J'ai exécuté : ouvre le bloc-notes - J'ai ouvert le bloc-notes.",
+    "rating": null,
+    "comment": null
+  },
+  {
+    "timestamp": "2025-06-24T22:22:58.916773",
+    "user_input": "ouvre le bloc-notes",
+    "assistant_response": "J'ai exécuté : ouvre le bloc-notes - J'ai ouvert le bloc-notes.",
+    "rating": null,
+    "comment": null
+  }
+]

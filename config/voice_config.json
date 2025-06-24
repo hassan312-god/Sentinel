@@ -1,0 +1,60 @@
+{
+  "tts": {
+    "use_cloud": false,
+    "cloud_provider": "elevenlabs",
+    "elevenlabs": {
+      "api_key": "",
+      "default_voice_id": "21m00Tcm4TlvDq8ikWAM",
+      "model_id": "eleven_multilingual_v2",
+      "voice_settings": {
+        "stability": 0.5,
+        "similarity_boost": 0.75,
+        "style": 0.0,
+        "use_speaker_boost": true
+      }
+    },
+    "local": {
+      "rate": 180,
+      "volume": 0.85,
+      "pitch": 1.1,
+      "voice_id": null
+    },
+    "responses": {
+      "brief_mode": true,
+      "confirmations": {
+        "open": "OK",
+        "close": "C'est fait",
+        "default": "D'accord"
+      }
+    }
+  },
+  "voices": {
+    "available_voices": [
+      {
+        "id": "21m00Tcm4TlvDq8ikWAM",
+        "name": "Rachel",
+        "description": "Voix féminine claire et professionnelle"
+      },
+      {
+        "id": "AZnzlk1XvdvUeBnXmlld",
+        "name": "Domi",
+        "description": "Voix féminine chaleureuse"
+      },
+      {
+        "id": "EXAVITQu4vr4xnSDxMaL",
+        "name": "Bella",
+        "description": "Voix féminine douce et naturelle"
+      },
+      {
+        "id": "ErXwobaYiN019PkySvjV",
+        "name": "Antoni",
+        "description": "Voix masculine claire et professionnelle"
+      },
+      {
+        "id": "MF3mGyEYCl7XYWbV9V6O",
+        "name": "Elli",
+        "description": "Voix féminine jeune et énergique"
+      }
+    ]
+  }
+} 
