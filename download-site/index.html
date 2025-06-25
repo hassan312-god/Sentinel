@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger Sentinel Voice</title>
     <link rel="icon" type="image/x-icon" href="../web-ui/public/assets/icons/favicon.ico">
+    <script src="https://kit.fontawesome.com/75fd6cfac5.js" crossorigin="anonymous"></script>
     <style>
         :root {
             --bg: #000;
@@ -12,9 +13,14 @@
             --border: #232329;
             --text: #fff;
             --text-secondary: #bdbdbd;
-            --accent: #90caf9;
-            --radius: 16px;
-            --shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+            --accent: #60aaff;
+            --radius: 14px;
+            --shadow: none;
+            --btn-bg: #232329;
+            --btn-hover: #232329;
+            --btn-main-bg: #fff;
+            --btn-main-color: #18181b;
+            --btn-main-hover: #e3e3e3;
         }
         html, body { height: 100%; }
         body {
@@ -57,8 +63,8 @@
             height: 28px;
         }
         .navbar-title {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             letter-spacing: 1px;
             color: var(--text);
         }
@@ -70,7 +76,7 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.05rem;
+            font-size: 1.08rem;
             transition: color 0.2s;
         }
         .navbar-link:hover {
@@ -82,22 +88,27 @@
             gap: 1.2rem;
         }
         .navbar-btn {
-            background: var(--text);
-            color: var(--bg);
+            background: var(--btn-main-bg);
+            color: var(--btn-main-color);
             border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 1.08rem;
+            padding: 0.6rem 1.5rem 0.6rem 1.1rem;
             cursor: pointer;
             transition: background 0.2s, color 0.2s;
             display: flex;
             align-items: center;
             gap: 0.7rem;
+            box-shadow: none;
+        }
+        .navbar-btn i {
+            font-size: 1.3em;
+            margin-right: 0.5rem;
         }
         .navbar-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
+            background: var(--btn-main-hover);
+            color: var(--btn-main-color);
         }
         .container {
             max-width: 900px;
@@ -109,33 +120,35 @@
             margin-bottom: 2.5rem;
         }
         .title {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 900;
             margin-bottom: 0.5rem;
             color: var(--text);
+            letter-spacing: -1px;
         }
         .subtitle {
-            font-size: 1.15rem;
+            font-size: 1.18rem;
             color: var(--text-secondary);
             margin-bottom: 2.2rem;
+            font-weight: 400;
         }
         .version-label {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
         .os-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
             margin-bottom: 2.5rem;
         }
         .os-card {
             background: var(--card);
-            border: 1.5px solid var(--border);
+            border: none;
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            box-shadow: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -143,45 +156,45 @@
             margin-bottom: 0.2rem;
             transition: border 0.2s, box-shadow 0.2s;
         }
-        .os-card:hover {
-            border: 1.5px solid var(--accent);
-            box-shadow: 0 4px 24px 0 #90caf91a;
-        }
         .os-info {
             display: flex;
             flex-direction: column;
             gap: 0.2rem;
         }
         .os-title {
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.18rem;
+            font-weight: 800;
             color: var(--text);
+            margin-bottom: 0.1rem;
         }
         .os-desc {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
+            font-weight: 400;
         }
         .os-btn {
-            background: none;
+            background: var(--btn-bg);
             border: none;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 0.7rem;
             color: var(--text);
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            font-size: 1.08rem;
+            font-weight: 700;
+            padding: 0.6rem 1.3rem 0.6rem 1.1rem;
+            border-radius: var(--radius);
             transition: background 0.2s;
+            box-shadow: none;
+            text-decoration: none;
+        }
+        .os-btn i {
+            font-size: 1.3em;
+            margin-left: 0.7rem;
         }
         .os-btn:hover {
-            background: #232329;
-        }
-        .os-icon {
-            width: 32px;
-            height: 32px;
-            margin-left: 1.2rem;
+            background: var(--btn-hover);
+            color: var(--accent);
         }
         .footer {
             background: var(--bg);
@@ -234,9 +247,12 @@
             border-radius: 6px;
             background: #232329;
             transition: background 0.2s;
+            color: #fff;
+            font-size: 1.2em;
         }
         .footer-social a:hover {
             background: var(--accent);
+            color: #18181b;
         }
         .footer-bottom {
             text-align: center;
@@ -267,7 +283,7 @@
         </div>
         <div class="navbar-right">
             <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe" class="navbar-btn">
-                <img src="../web-ui/public/assets/icons/windows.svg" alt="Windows" width="22" height="22"/>
+                <i class="fa-brands fa-windows"></i>
                 Télécharger
             </a>
         </div>
@@ -285,8 +301,8 @@
                     <div class="os-desc">Mac universel</div>
                 </div>
                 <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS">
-                    <img src="../web-ui/public/assets/icons/macos.svg" class="os-icon" alt="macOS"/>
-                    <span>Télécharger</span>
+                    Télécharger
+                    <i class="fa-brands fa-apple"></i>
                 </a>
             </div>
             <div class="os-card">
@@ -295,8 +311,8 @@
                     <div class="os-desc">Windows 10/11 (x64)</div>
                 </div>
                 <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe">
-                    <img src="../web-ui/public/assets/icons/windows.svg" class="os-icon" alt="Windows"/>
-                    <span>Télécharger</span>
+                    Télécharger
+                    <i class="fa-brands fa-windows"></i>
                 </a>
             </div>
             <div class="os-card">
@@ -305,8 +321,8 @@
                     <div class="os-desc">Ubuntu 18.04+, Debian 10+</div>
                 </div>
                 <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux">
-                    <img src="../web-ui/public/assets/icons/linux.svg" class="os-icon" alt="Linux"/>
-                    <span>Télécharger</span>
+                    Télécharger
+                    <i class="fa-brands fa-linux"></i>
                 </a>
             </div>
         </div>
@@ -341,10 +357,10 @@
             <div class="footer-col">
                 <div class="footer-col-title">Contact</div>
                 <div class="footer-social">
-                    <a href="mailto:hi@sentinelvoice.com" title="Email"><img src="../web-ui/public/assets/icons/mail.svg" width="20" height="20" alt="Mail"></a>
-                    <a href="https://github.com/hassan312-god/Sentinel" target="_blank" title="GitHub"><img src="../web-ui/public/assets/icons/github.svg" width="20" height="20" alt="GitHub"></a>
-                    <a href="#" title="X"><img src="../web-ui/public/assets/icons/x.svg" width="20" height="20" alt="X"></a>
-                    <a href="#" title="YouTube"><img src="../web-ui/public/assets/icons/youtube.svg" width="20" height="20" alt="YouTube"></a>
+                    <a href="mailto:hi@sentinelvoice.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://github.com/hassan312-god/Sentinel" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                 </div>
                 <div style="margin-top:0.5rem; color:var(--text); font-size:1.05rem;">hi@sentinelvoice.com</div>
             </div>
