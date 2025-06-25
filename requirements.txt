@@ -35,6 +35,9 @@ flask==3.0.0
 flask-socketio==5.3.6
 python-socketio==5.10.0
 
+# Build and packaging
+pyinstaller==6.3.0
+
 # Development and testing
 pytest==7.4.3
 black==23.11.0

@@ -60,14 +60,50 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: ./artifacts
 
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Récupérer le tag actuel
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+          
+          # Générer le changelog depuis les commits
+          CHANGELOG=$(git log --pretty=format:"- %s" $(git describe --tags --abbrev=0 HEAD^)..HEAD)
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.changelog.outputs.tag_name }}
+          name: Sentinel Voice ${{ steps.changelog.outputs.tag_name }}
+          body: |
+            ## 🚀 Nouvelle version de Sentinel Voice
+            
+            ### 📋 Changelog
+            ${{ steps.changelog.outputs.changelog }}
+            
+            ### 📥 Téléchargements
+            - **Windows** : Sentinel-Windows.exe
+            - **Mac** : Sentinel-macOS
+            - **Linux** : Sentinel-Linux
+            
+            ### 🔧 Installation
+            1. Téléchargez le fichier correspondant à votre OS
+            2. Rendez-le exécutable (Linux/Mac) : `chmod +x Sentinel-*`
+            3. Lancez l'application
+            
+            ### 📖 Documentation
+            Consultez le [README](https://github.com/hassan312-god/Sentinel) pour plus d'informations.
           files: ./artifacts/**/*.exe
           files: ./artifacts/**/Sentinel-*
         env:
