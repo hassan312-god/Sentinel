@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import GlobalStyles from './styles/GlobalStyles';
 
 // Components
 import Sidebar from './components/Sidebar';
@@ -12,9 +13,6 @@ import CommandsPage from './pages/CommandsPage';
 import HistoryPage from './pages/HistoryPage';
 import SettingsPage from './pages/SettingsPage';
 import HelpPage from './pages/HelpPage';
-
-// Global Styles
-import { GlobalStyles } from './styles/GlobalStyles';
 
 const AppContainer = styled.div`
   display: flex;
@@ -150,12 +148,11 @@ function App() {
   // Gestion des erreurs globales
   useEffect(() => {
     const handleError = (error) => {
-      console.error('Erreur globale:', error);
       // Ici on pourrait envoyer l'erreur à un service de monitoring
     };
 
     const handleUnhandledRejection = (event) => {
-      console.error('Promesse rejetée:', event.reason);
+      // Ici on pourrait envoyer l'erreur à un service de monitoring
     };
 
     window.addEventListener('error', handleError);
@@ -179,8 +176,8 @@ function App() {
             <svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#E55A2B;stop-opacity:1" />
+                  <stop offset="0%" stopColor="#FF6B35" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#E55A2B" stopOpacity="1" />
                 </linearGradient>
               </defs>
               
@@ -200,7 +197,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <>
       <GlobalStyles />
       <AppContainer>
         <Sidebar isConnected={isConnected} />
@@ -250,7 +247,7 @@ function App() {
           )}
         </AnimatePresence>
       </AppContainer>
-    </Router>
+    </>
   );
 }
 

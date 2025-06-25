@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -16,10 +16,8 @@ import {
   Settings,
   Brain,
   Zap,
-  Shield,
   Clock,
-  CheckCircle,
-  AlertCircle
+  CheckCircle
 } from 'lucide-react';
 
 const CommandsContainer = styled(motion.div)`
@@ -473,7 +471,6 @@ const CommandsPage = () => {
 
   const handleTestCommand = (command) => {
     // Simulation d'un test de commande
-    console.log(`Test de la commande: ${command.trigger}`);
   };
 
   return (
@@ -549,7 +546,7 @@ const CommandsPage = () => {
               <CommandHeader>
                 <CommandInfo>
                   <CommandTitle>{command.description}</CommandTitle>
-                  <CommandTrigger>"{command.trigger}"</CommandTrigger>
+                  <CommandTrigger>&quot;{command.trigger}&quot;</CommandTrigger>
                   <CommandDescription>
                     Action: {command.action} → {command.target}
                   </CommandDescription>

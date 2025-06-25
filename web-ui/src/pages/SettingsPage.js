@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
-  Settings, 
   Mic, 
   Volume2, 
-  Globe, 
   Monitor, 
   Shield, 
   Save, 
   RotateCcw,
-  CheckCircle,
-  AlertCircle,
   Wifi,
   WifiOff,
   Play,
   Pause,
-  Zap,
   Moon,
   Sun,
   Palette,
@@ -365,7 +360,6 @@ const SettingsPage = () => {
   });
 
   const [isTestingVoice, setIsTestingVoice] = useState(false);
-  const [isConnected, setIsConnected] = useState(true);
 
   const accentColors = [
     '#FF6B35', '#E74C3C', '#3498DB', '#27AE60', 
@@ -385,7 +379,6 @@ const SettingsPage = () => {
   const handleSaveSettings = () => {
     // Sauvegarder les paramètres
     localStorage.setItem('sentinel-settings', JSON.stringify(settings));
-    console.log('Paramètres sauvegardés:', settings);
   };
 
   const handleResetSettings = () => {
@@ -523,9 +516,9 @@ const SettingsPage = () => {
                   value={settings.voice.apiKey}
                   onChange={(e) => handleSettingChange('voice', 'apiKey', e.target.value)}
                 />
-                <StatusIndicator status={isConnected ? 'connected' : 'disconnected'}>
-                  {isConnected ? <Wifi size={14} /> : <WifiOff size={14} />}
-                  {isConnected ? 'Connecté' : 'Déconnecté'}
+                <StatusIndicator status="connected">
+                  <Wifi size={14} />
+                  Connecté
                 </StatusIndicator>
               </SettingItem>
 
@@ -581,7 +574,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Réponses brèves</SettingLabel>
             <SettingDescription>
-              Utilisez des réponses courtes ("OK", "C'est fait") pour une expérience plus fluide
+              Utilisez des réponses courtes (&quot;OK&quot;, &quot;C&apos;est fait&quot;) pour une expérience plus fluide
             </SettingDescription>
             <Toggle
               active={settings.voice.briefMode}
@@ -653,9 +646,9 @@ const SettingsPage = () => {
           </SettingItem>
 
           <SettingItem>
-            <SettingLabel>Mot d'éveil</SettingLabel>
+            <SettingLabel>Mot d&apos;éveil</SettingLabel>
             <SettingDescription>
-              Mot ou phrase pour activer l'assistant vocal
+              Mot ou phrase pour activer l&apos;assistant vocal
             </SettingDescription>
             <Input
               type="text"
@@ -668,7 +661,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Écoute continue</SettingLabel>
             <SettingDescription>
-              L'assistant écoute en permanence (consomme plus de ressources)
+              L&apos;assistant écoute en permanence (consomme plus de ressources)
             </SettingDescription>
             <Toggle
               active={settings.recognition.continuous}
@@ -701,7 +694,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Thème</SettingLabel>
             <SettingDescription>
-              Choisissez le thème de l'interface
+              Choisissez le thème de l&apos;interface
             </SettingDescription>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -736,9 +729,9 @@ const SettingsPage = () => {
           </SettingItem>
 
           <SettingItem>
-            <SettingLabel>Couleur d'accent</SettingLabel>
+            <SettingLabel>Couleur d&apos;accent</SettingLabel>
             <SettingDescription>
-              Choisissez la couleur principale de l'interface
+              Choisissez la couleur principale de l&apos;interface
             </SettingDescription>
             <ColorPicker>
               {accentColors.map(color => (
@@ -755,7 +748,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Animations</SettingLabel>
             <SettingDescription>
-              Activez les animations et transitions de l'interface
+              Activez les animations et transitions de l&apos;interface
             </SettingDescription>
             <Toggle
               active={settings.interface.animations}
@@ -773,7 +766,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Effets sonores</SettingLabel>
             <SettingDescription>
-              Activez les effets sonores de l'interface
+              Activez les effets sonores de l&apos;interface
             </SettingDescription>
             <Toggle
               active={settings.interface.soundEffects}
@@ -824,7 +817,7 @@ const SettingsPage = () => {
           <SettingItem>
             <SettingLabel>Minimiser dans la barre des tâches</SettingLabel>
             <SettingDescription>
-              Minimisez l'application dans la barre des tâches au lieu de la fermer
+              Minimisez l&apos;application dans la barre des tâches au lieu de la fermer
             </SettingDescription>
             <Toggle
               active={settings.system.minimizeToTray}

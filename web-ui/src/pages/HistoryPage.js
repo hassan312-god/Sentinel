@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-components';
 import { 
-  History, 
-  Calendar, 
   Clock, 
   Mic, 
-  Volume2, 
   CheckCircle, 
   AlertCircle, 
-  Filter,
   Download,
   Trash2,
   Search,
   BarChart3,
-  TrendingUp,
   Activity,
   Play,
-  Pause,
-  RefreshCw
+  Pause
 } from 'lucide-react';
 
 const HistoryContainer = styled(motion.div)`
@@ -226,13 +220,6 @@ const HistoryInfo = styled.div`
   flex: 1;
 `;
 
-const HistoryTitle = styled.h3`
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin: 0 0 0.5rem 0;
-`;
-
 const HistoryTime = styled.div`
   display: flex;
   align-items: center;
@@ -352,7 +339,7 @@ const HistoryPage = () => {
       id: 2,
       timestamp: '2024-01-15T14:25:00',
       command: 'ferme notepad',
-      response: 'C\'est fait',
+      response: 'C&apos;est fait',
       success: true,
       duration: 1.8,
       confidence: 0.92
@@ -360,7 +347,7 @@ const HistoryPage = () => {
     {
       id: 3,
       timestamp: '2024-01-15T14:20:00',
-      command: 'verrouille l\'écran',
+      command: 'verrouille l&apos;écran',
       response: 'OK',
       success: true,
       duration: 2.1,
@@ -411,7 +398,7 @@ const HistoryPage = () => {
   });
 
   const handleClearHistory = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir effacer tout l\'historique ?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir effacer tout l&apos;historique ?')) {
       setHistory([]);
     }
   };
@@ -442,7 +429,7 @@ const HistoryPage = () => {
     const date = new Date(timestamp);
     const diffInMinutes = Math.floor((now - date) / (1000 * 60));
     
-    if (diffInMinutes < 1) return 'À l\'instant';
+    if (diffInMinutes < 1) return 'À l&apos;instant';
     if (diffInMinutes < 60) return `Il y a ${diffInMinutes} min`;
     if (diffInMinutes < 1440) return `Il y a ${Math.floor(diffInMinutes / 60)}h`;
     return `Il y a ${Math.floor(diffInMinutes / 1440)}j`;
@@ -514,7 +501,7 @@ const HistoryPage = () => {
             <Activity size={24} />
           </StatIcon>
           <StatValue>{stats.todayCommands}</StatValue>
-          <StatLabel>Aujourd'hui</StatLabel>
+          <StatLabel>Aujourd&apos;hui</StatLabel>
         </StatCard>
       </StatsSection>
 
@@ -525,7 +512,7 @@ const HistoryPage = () => {
       >
         <ChartTitle>
           <BarChart3 size={24} />
-          Statistiques d'Utilisation
+          Statistiques d&apos;Utilisation
         </ChartTitle>
         <ChartPlaceholder>
           Graphique des interactions vocales (à implémenter avec Chart.js ou Recharts)
@@ -541,7 +528,7 @@ const HistoryPage = () => {
           <SearchBar>
             <Search size={20} color="rgba(255, 255, 255, 0.6)" />
             <SearchInput
-              placeholder="Rechercher dans l'historique..."
+              placeholder="Rechercher dans l&apos;historique..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -598,7 +585,7 @@ const HistoryPage = () => {
                     <Clock size={14} />
                     {formatTime(item.timestamp)} ({getTimeAgo(item.timestamp)})
                   </HistoryTime>
-                  <HistoryCommand>"{item.command}"</HistoryCommand>
+                  <HistoryCommand>&quot;{item.command}&quot;</HistoryCommand>
                   <HistoryResponse>{item.response}</HistoryResponse>
                 </HistoryInfo>
                 <HistoryActions>

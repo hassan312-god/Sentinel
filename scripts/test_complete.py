@@ -57,12 +57,6 @@ class SentinelTester:
             self.log_success("pygame installé")
         except ImportError:
             self.log_error("pygame manquant")
-        
-        try:
-            import PyQt6
-            self.log_success("PyQt6 installé")
-        except ImportError:
-            self.log_warning("PyQt6 manquant (optionnel)")
     
     def test_react_dependencies(self):
         """Teste les dépendances React"""

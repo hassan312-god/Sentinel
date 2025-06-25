@@ -1,7 +1,4 @@
 import sys
-from PyQt6.QtWidgets import QApplication
-from PyQt6.QtCore import Qt
-from ui.sentinel_app import SentinelApp
 
 def main():
     app = QApplication(sys.argv)
@@ -11,8 +8,6 @@ def main():
     
     window = SentinelApp()
     
-    # S'assurer que la fenêtre reste au premier plan
-    window.setWindowFlags(window.windowFlags() | Qt.WindowType.WindowStaysOnTopHint)
     window.show()
     window.raise_()
     window.activateWindow()

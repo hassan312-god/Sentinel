@@ -6,21 +6,15 @@ import {
   BookOpen, 
   Video, 
   MessageCircle, 
-  Mail, 
-  ExternalLink,
   ChevronDown,
   ChevronRight,
   Search,
-  Mic,
   Command,
   Settings,
   Shield,
-  Zap,
   Play,
   Download,
-  FileText,
   Users,
-  Globe,
   Github
 } from 'lucide-react';
 
@@ -501,9 +495,9 @@ const HelpPage = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Title>Centre d'Aide</Title>
+        <Title>Centre d&apos;Aide</Title>
         <Subtitle>
-          Trouvez rapidement l'aide dont vous avez besoin pour utiliser Sentinel Voice
+          Trouvez rapidement l&apos;aide dont vous avez besoin pour utiliser Sentinel Voice
         </Subtitle>
       </Header>
 
@@ -515,7 +509,7 @@ const HelpPage = () => {
         <SearchBar>
           <Search size={24} color="rgba(255, 255, 255, 0.6)" />
           <SearchInput
-            placeholder="Rechercher dans l'aide..."
+            placeholder="Rechercher dans l&apos;aide..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -540,8 +534,8 @@ const HelpPage = () => {
             <StepContent>
               <StepTitle>Installer et lancer</StepTitle>
               <StepDescription>
-                Téléchargez et installez Sentinel Voice, puis lancez l'application. 
-                L'assistant se connectera automatiquement.
+                Téléchargez et installez Sentinel Voice, puis lancez l&apos;application. 
+                L&apos;assistant se connectera automatiquement.
               </StepDescription>
             </StepContent>
           </StepItem>
@@ -560,10 +554,10 @@ const HelpPage = () => {
           <StepItem>
             <StepNumber>3</StepNumber>
             <StepContent>
-              <StepTitle>Activer l'écoute</StepTitle>
+              <StepTitle>Activer l&apos;écoute</StepTitle>
               <StepDescription>
-                Cliquez sur le bouton microphone ou dites "Sentinel" pour activer l'écoute. 
-                L'assistant est prêt à recevoir vos commandes.
+                Cliquez sur le bouton microphone ou dites &quot;Sentinel&quot; pour activer l&apos;écoute. 
+                L&apos;assistant est prêt à recevoir vos commandes.
               </StepDescription>
             </StepContent>
           </StepItem>
@@ -573,8 +567,8 @@ const HelpPage = () => {
             <StepContent>
               <StepTitle>Essayer vos premières commandes</StepTitle>
               <StepDescription>
-                Dites "ouvre chrome" ou "verrouille l'écran" pour tester. 
-                L'assistant apprendra vos habitudes avec le temps.
+                Dites &quot;ouvre chrome&quot; ou &quot;verrouille l&apos;écran&quot; pour tester. 
+                L&apos;assistant apprendra vos habitudes avec le temps.
               </StepDescription>
             </StepContent>
           </StepItem>
@@ -637,7 +631,7 @@ const HelpPage = () => {
           <CommandList>
             {commands.map((command, index) => (
               <CommandItem key={index}>
-                <CommandTrigger>"{command.trigger}"</CommandTrigger>
+                <CommandTrigger>&quot;{command.trigger}&quot;</CommandTrigger>
                 <CommandDescription>{command.description}</CommandDescription>
               </CommandItem>
             ))}

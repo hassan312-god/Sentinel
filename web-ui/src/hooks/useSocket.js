@@ -15,24 +15,19 @@ export const useSocket = () => {
 
       socket.on('connect', () => {
         setIsConnected(true);
-        console.log('Connected to Python backend');
       });
 
       socket.on('disconnect', () => {
         setIsConnected(false);
-        console.log('Disconnected from Python backend');
       });
 
       socket.on('voice_response', (data) => {
-        console.log('Voice response received:', data);
       });
 
       socket.on('command_executed', (data) => {
-        console.log('Command executed:', data);
       });
 
       socket.on('error', (error) => {
-        console.error('Socket error:', error);
       });
     }
 

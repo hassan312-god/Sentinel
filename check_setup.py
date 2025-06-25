@@ -25,7 +25,6 @@ def check_dependencies():
     """Vérifie les dépendances Python"""
     print("\n📦 Vérification des dépendances Python...")
     required_packages = [
-        ('PyQt6', 'PyQt6'),
         ('pygame', 'pygame'),
         ('pyttsx3', 'pyttsx3'),
         ('SpeechRecognition', 'speech_recognition'),

@@ -78,7 +78,6 @@ def test_dependencies():
     required_packages = [
         'pygame',
         'lottie',
-        'PyQt6',
         'pyttsx3',
         'SpeechRecognition',
         'pyaudio',

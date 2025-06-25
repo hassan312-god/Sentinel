@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -12,8 +12,6 @@ import {
   Settings,
   Activity,
   Clock,
-  CheckCircle,
-  AlertCircle,
   Play,
   Pause,
   RotateCcw
@@ -237,32 +235,6 @@ const ActivityTime = styled.div`
 
 const Dashboard = ({ isConnected }) => {
   const [isListening, setIsListening] = useState(false);
-  const [recentActivities] = useState([
-    { 
-      icon: Mic, 
-      text: 'Commande vocale reconnue: "Ouvre Chrome"', 
-      time: 'Il y a 2 minutes',
-      color: '#27AE60'
-    },
-    { 
-      icon: Shield, 
-      text: 'Système de sécurité activé', 
-      time: 'Il y a 5 minutes',
-      color: '#3498DB'
-    },
-    { 
-      icon: Brain, 
-      text: 'Apprentissage d\'une nouvelle commande', 
-      time: 'Il y a 10 minutes',
-      color: '#9B59B6'
-    },
-    { 
-      icon: Lock, 
-      text: 'Vérification de sécurité terminée', 
-      time: 'Il y a 15 minutes',
-      color: '#E74C3C'
-    }
-  ]);
 
   const handleMicToggle = () => {
     setIsListening(!isListening);
@@ -334,7 +306,7 @@ const Dashboard = ({ isConnected }) => {
             <CardTitle>Intelligence Artificielle</CardTitle>
           </CardHeader>
           <CardContent>
-            IA locale activée pour le traitement des commandes et l'apprentissage.
+            IA locale activée pour le traitement des commandes et l&apos;apprentissage.
             <StatsGrid>
               <StatItem>
                 <StatValue>15</StatValue>
@@ -392,7 +364,7 @@ const Dashboard = ({ isConnected }) => {
             <StatsGrid>
               <StatItem>
                 <StatValue>24</StatValue>
-                <StatLabel>Commandes Aujourd'hui</StatLabel>
+                <StatLabel>Commandes Aujourd&apos;hui</StatLabel>
               </StatItem>
               <StatItem>
                 <StatValue>7</StatValue>
@@ -420,7 +392,7 @@ const Dashboard = ({ isConnected }) => {
             whileTap={{ scale: 0.95 }}
           >
             {isListening ? <Pause /> : <Play />}
-            {isListening ? 'Arrêter l\'Écoute' : 'Démarrer l\'Écoute'}
+            {isListening ? 'Arrêter l&apos;Écoute' : 'Démarrer l&apos;Écoute'}
           </ControlButton>
           
           <ControlButton
