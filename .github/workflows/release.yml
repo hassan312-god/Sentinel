@@ -134,11 +134,12 @@ jobs:
             ### 📊 Métriques
             - ⭐ Étoiles GitHub : [![Stars](https://img.shields.io/github/stars/hassan312-god/Sentinel)](https://github.com/hassan312-god/Sentinel/stargazers)
             - 📥 Téléchargements : [![Downloads](https://img.shields.io/github/downloads/hassan312-god/Sentinel/total)](https://github.com/hassan312-god/Sentinel/releases)
-          files: ./artifacts/**/*.exe
-          files: ./artifacts/**/Sentinel-*
-          files: ./artifacts/**/*.msi
-          files: ./artifacts/**/*.dmg
-          files: ./artifacts/**/*.deb
+          files: |
+            ./artifacts/**/*.exe
+            ./artifacts/**/Sentinel-*
+            ./artifacts/**/*.msi
+            ./artifacts/**/*.dmg
+            ./artifacts/**/*.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
