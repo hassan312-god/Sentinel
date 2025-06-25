@@ -3,333 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Télécharger Sentinel Voice - Assistant Vocal Intelligent</title>
+    <title>Télécharger Sentinel Voice</title>
     <link rel="icon" type="image/x-icon" href="../web-ui/public/assets/icons/favicon.ico">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #000;
+            --card: #18181b;
+            --border: #232329;
+            --text: #fff;
+            --text-secondary: #bdbdbd;
+            --accent: #90caf9;
+            --radius: 16px;
+            --shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
         }
-
+        html, body { height: 100%; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-        }
-
-        .title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #FF6B35, #E55A2B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-        }
-
-        .version-selector {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+        }
+        .navbar {
+            width: 100%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar-left {
+            display: flex;
+            align-items: center;
             gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
         }
-
-        .version-btn {
-            padding: 0.75rem 1.5rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .version-btn.active {
-            background: linear-gradient(45deg, #FF6B35, #E55A2B);
-            border-color: #FF6B35;
-        }
-
-        .version-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-        }
-
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .download-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .os-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1rem;
+        .navbar-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: #fff1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
         }
-
-        .os-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .navbar-logo img {
+            width: 28px;
+            height: 28px;
         }
-
-        .os-desc {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1.5rem;
+        .navbar-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text);
         }
-
-        .download-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #FF6B35, #E55A2B);
-            color: #fff;
+        .navbar-center {
+            display: flex;
+            gap: 2.2rem;
+        }
+        .navbar-link {
+            color: var(--text-secondary);
             text-decoration: none;
-            border-radius: 12px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: color 0.2s;
+        }
+        .navbar-link:hover {
+            color: var(--text);
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .navbar-btn {
+            background: var(--text);
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            padding: 0.6rem 1.4rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .navbar-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem 1rem 0 1rem;
+            flex: 1 0 auto;
+        }
+        .header {
+            margin-bottom: 2.5rem;
+        }
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.2rem;
+        }
+        .version-label {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .os-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .os-card {
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.3rem 1.5rem;
+            margin-bottom: 0.2rem;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        .os-card:hover {
+            border: 1.5px solid var(--accent);
+            box-shadow: 0 4px 24px 0 #90caf91a;
+        }
+        .os-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .os-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .os-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+        .os-btn {
+            background: none;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.2s;
         }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        .os-btn:hover {
+            background: #232329;
         }
-
-        .download-btn:active {
-            transform: translateY(0);
+        .os-icon {
+            width: 32px;
+            height: 32px;
+            margin-left: 1.2rem;
         }
-
-        .file-size {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 0.5rem;
-        }
-
         .footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--bg);
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0 1.2rem 0;
+            margin-top: 3rem;
         }
-
-        .footer-links {
+        .footer-main {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
             flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1100px;
+            margin: 0 auto 2.2rem auto;
+            gap: 2.5rem;
         }
-
-        .footer-link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .footer-col {
+            min-width: 140px;
+            margin-bottom: 1.2rem;
         }
-
-        .footer-link:hover {
-            color: #FF6B35;
-        }
-
-        .metrics {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 2rem;
+        .footer-col-title {
             font-weight: 700;
-            color: #FF6B35;
+            color: var(--text);
+            margin-bottom: 0.7rem;
+            font-size: 1.08rem;
         }
-
-        .metric-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            transition: color 0.2s;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-            
-            .title {
-                font-size: 2rem;
-            }
-            
-            .downloads-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .version-selector {
-                flex-direction: column;
-                align-items: center;
-            }
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        .footer-social {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            margin-bottom: 0.7rem;
+        }
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: #232329;
+            transition: background 0.2s;
+        }
+        .footer-social a:hover {
+            background: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin-top: 1.2rem;
+        }
+        @media (max-width: 900px) {
+            .footer-main { flex-direction: column; gap: 1.5rem; }
+            .navbar { flex-direction: column; gap: 0.7rem; padding: 0.5rem 1rem; }
+            .container { padding: 1.2rem 0.5rem 0 0.5rem; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-logo">
+                <img src="../web-ui/public/assets/icons/sentinel-logo.ico" alt="Sentinel Logo">
+            </div>
+            <span class="navbar-title">Sentinel Voice</span>
+        </div>
+        <div class="navbar-center">
+            <a href="#telechargement" class="navbar-link">Téléchargements</a>
+            <a href="https://github.com/hassan312-god/Sentinel" class="navbar-link" target="_blank">GitHub</a>
+            <a href="https://github.com/hassan312-god/Sentinel/releases" class="navbar-link" target="_blank">Releases</a>
+            <a href="https://github.com/hassan312-god/Sentinel/issues" class="navbar-link" target="_blank">Support</a>
+        </div>
+        <div class="navbar-right">
+            <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe" class="navbar-btn">
+                <img src="../web-ui/public/assets/icons/windows.svg" alt="Windows" width="22" height="22"/>
+                Télécharger
+            </a>
+        </div>
+    </nav>
     <div class="container">
         <div class="header">
-            <img src="../web-ui/public/assets/icons/sentinel-logo.ico" alt="Sentinel Logo" class="logo">
-            <h1 class="title">Télécharger Sentinel Voice</h1>
-            <p class="subtitle">Assistant vocal intelligent, sécurisé et moderne pour Windows, Mac et Linux</p>
-            
-            <div class="version-selector">
-                <button class="version-btn active" onclick="showVersion('latest')">Dernière Version (1.0.1)</button>
-                <button class="version-btn" onclick="showVersion('1.0.0')">1.0.0</button>
-                <button class="version-btn" onclick="showVersion('0.9.0')">0.9.0</button>
-            </div>
+            <div class="title">Télécharger Sentinel Voice</div>
+            <div class="subtitle">Choisissez votre plateforme pour télécharger la dernière version de Sentinel Voice</div>
+            <div class="version-label">Dernière version <b>(1.0.1)</b></div>
         </div>
-
-        <div class="downloads-grid" id="latest-version">
-            <div class="download-card">
-                <div class="os-icon">🪟</div>
-                <h3 class="os-name">Windows</h3>
-                <p class="os-desc">Windows 10/11 (x64)</p>
-                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe" class="download-btn">
-                    Télécharger pour Windows
+        <div class="os-grid" id="telechargement">
+            <div class="os-card">
+                <div class="os-info">
+                    <div class="os-title">macOS</div>
+                    <div class="os-desc">Mac universel</div>
+                </div>
+                <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS">
+                    <img src="../web-ui/public/assets/icons/macos.svg" class="os-icon" alt="macOS"/>
+                    <span>Télécharger</span>
                 </a>
-                <div class="file-size">~45 MB</div>
             </div>
-
-            <div class="download-card">
-                <div class="os-icon">🍎</div>
-                <h3 class="os-name">macOS</h3>
-                <p class="os-desc">macOS 10.15+ (Universal)</p>
-                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS" class="download-btn">
-                    Télécharger pour macOS
+            <div class="os-card">
+                <div class="os-info">
+                    <div class="os-title">Windows</div>
+                    <div class="os-desc">Windows 10/11 (x64)</div>
+                </div>
+                <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe">
+                    <img src="../web-ui/public/assets/icons/windows.svg" class="os-icon" alt="Windows"/>
+                    <span>Télécharger</span>
                 </a>
-                <div class="file-size">~42 MB</div>
             </div>
-
-            <div class="download-card">
-                <div class="os-icon">🐧</div>
-                <h3 class="os-name">Linux</h3>
-                <p class="os-desc">Ubuntu 18.04+, Debian 10+</p>
-                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux" class="download-btn">
-                    Télécharger pour Linux
+            <div class="os-card">
+                <div class="os-info">
+                    <div class="os-title">Linux</div>
+                    <div class="os-desc">Ubuntu 18.04+, Debian 10+</div>
+                </div>
+                <a class="os-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux">
+                    <img src="../web-ui/public/assets/icons/linux.svg" class="os-icon" alt="Linux"/>
+                    <span>Télécharger</span>
                 </a>
-                <div class="file-size">~38 MB</div>
             </div>
-        </div>
-
-        <div class="metrics">
-            <div class="metric">
-                <div class="metric-value" id="downloads">1.2k</div>
-                <div class="metric-label">Téléchargements</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" id="stars">⭐ 15</div>
-                <div class="metric-label">Étoiles GitHub</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value" id="releases">3</div>
-                <div class="metric-label">Releases</div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="footer-links">
-                <a href="https://github.com/hassan312-god/Sentinel" class="footer-link" target="_blank">GitHub</a>
-                <a href="https://github.com/hassan312-god/Sentinel/releases" class="footer-link" target="_blank">Releases</a>
-                <a href="https://github.com/hassan312-god/Sentinel/issues" class="footer-link" target="_blank">Issues</a>
-                <a href="https://github.com/hassan312-god/Sentinel/blob/main/README.md" class="footer-link" target="_blank">Documentation</a>
-            </div>
-            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
-                © 2025 Sentinel Voice - Assistant vocal intelligent et sécurisé
-            </p>
         </div>
     </div>
-
-    <script>
-        function showVersion(version) {
-            // Mettre à jour les boutons actifs
-            document.querySelectorAll('.version-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Ici on pourrait charger les liens pour différentes versions
-            console.log('Version sélectionnée:', version);
-        }
-
-        // Animation des métriques
-        function animateMetrics() {
-            const metrics = document.querySelectorAll('.metric-value');
-            metrics.forEach(metric => {
-                const finalValue = metric.textContent;
-                let currentValue = 0;
-                const increment = parseInt(finalValue.replace(/\D/g, '')) / 50;
-                
-                const timer = setInterval(() => {
-                    currentValue += increment;
-                    if (currentValue >= parseInt(finalValue.replace(/\D/g, ''))) {
-                        metric.textContent = finalValue;
-                        clearInterval(timer);
-                    } else {
-                        metric.textContent = Math.floor(currentValue) + (finalValue.includes('k') ? 'k' : '');
-                    }
-                }, 50);
-            });
-        }
-
-        // Lancer l'animation au chargement
-        window.addEventListener('load', animateMetrics);
-    </script>
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-col">
+                <div class="footer-col-title">Produit</div>
+                <a href="#" class="footer-link">Prisée</a>
+                <a href="#" class="footer-link">Fonctionnalités</a>
+                <a href="#" class="footer-link">Téléchargements</a>
+                <a href="#" class="footer-link">Étudiants</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">Ressources</div>
+                <a href="#" class="footer-link">Docs</a>
+                <a href="#" class="footer-link">Blog</a>
+                <a href="#" class="footer-link">Forum</a>
+                <a href="#" class="footer-link">Journal des modifications</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">Compagnie</div>
+                <a href="#" class="footer-link">Carrières</a>
+                <a href="#" class="footer-link">Communauté</a>
+                <a href="#" class="footer-link">Clientèle</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">Légal</div>
+                <a href="#" class="footer-link">Sécurité</a>
+                <a href="#" class="footer-link">Vie privée</a>
+            </div>
+            <div class="footer-col">
+                <div class="footer-col-title">Contact</div>
+                <div class="footer-social">
+                    <a href="mailto:hi@sentinelvoice.com" title="Email"><img src="../web-ui/public/assets/icons/mail.svg" width="20" height="20" alt="Mail"></a>
+                    <a href="https://github.com/hassan312-god/Sentinel" target="_blank" title="GitHub"><img src="../web-ui/public/assets/icons/github.svg" width="20" height="20" alt="GitHub"></a>
+                    <a href="#" title="X"><img src="../web-ui/public/assets/icons/x.svg" width="20" height="20" alt="X"></a>
+                    <a href="#" title="YouTube"><img src="../web-ui/public/assets/icons/youtube.svg" width="20" height="20" alt="YouTube"></a>
+                </div>
+                <div style="margin-top:0.5rem; color:var(--text); font-size:1.05rem;">hi@sentinelvoice.com</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 Sentinel Voice — Assistant vocal intelligent et sécurisé
+        </div>
+    </footer>
 </body>
 </html> 
