@@ -82,5 +82,13 @@
   {
     "phrase": "verrouille l'écran",
     "action": "lock"
+  },
+  {
+    "phrase": "bloc",
+    "action": "generic_response"
+  },
+  {
+    "phrase": "explorer",
+    "action": "generic_response"
   }
-] 
+]
