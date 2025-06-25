@@ -1,3 +1,7 @@
+[![Build](https://github.com/hassan312-god/Sentinel/actions/workflows/release.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
+[![Release](https://img.shields.io/github/v/release/hassan312-god/Sentinel?label=release)](https://github.com/hassan312-god/Sentinel/releases)
+[![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Mac%20%7C%20Linux-blue)](#)
+
 # 🛡️ Sentinel Voice - Assistant Vocal Intelligent
 
 Un assistant vocal sécurisé et intelligent pour PC, conçu pour fonctionner principalement hors-ligne avec une interface moderne inspirée de Norton 360.

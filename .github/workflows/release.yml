@@ -1,0 +1,74 @@
+name: Build & Release Sentinel
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Install Node.js dependencies
+        run: |
+          cd web-ui
+          npm install
+
+      - name: Build executable
+        run: |
+          python build_exe.py
+
+      - name: Rename binary for OS
+        run: |
+          mkdir upload
+          if [ "$RUNNER_OS" = "Windows" ]; then mv dist/main.exe upload/Sentinel-Windows.exe; fi
+          if [ "$RUNNER_OS" = "Linux" ]; then mv dist/main upload/Sentinel-Linux; fi
+          if [ "$RUNNER_OS" = "macOS" ]; then mv dist/main upload/Sentinel-macOS; fi
+        shell: bash
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sentinel-${{ runner.os }}
+          path: upload/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./artifacts/**/*.exe
+          files: ./artifacts/**/Sentinel-*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 

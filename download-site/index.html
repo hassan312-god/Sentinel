@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Télécharger Sentinel Voice</title>
+  <link rel="icon" type="image/x-icon" href="../web-ui/public/assets/icons/favicon.ico">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(0,0,0,0.4);
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      text-align: center;
+      max-width: 400px;
+      margin: 2rem;
+    }
+    .logo {
+      width: 64px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .desc {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #e0e0e0;
+    }
+    .download-btn {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #FF6B35, #E55A2B);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .download-btn:hover {
+      background: linear-gradient(90deg, #E55A2B, #FF6B35);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .os-label {
+      font-size: 0.95rem;
+      color: #bdbdbd;
+      margin-bottom: 0.2rem;
+    }
+    .github-link {
+      color: #fff;
+      opacity: 0.7;
+      font-size: 0.95rem;
+      margin-top: 1.5rem;
+      display: inline-block;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem 0.5rem;
+        max-width: 95vw;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="../web-ui/public/assets/icons/sentinel-logo.ico" alt="Sentinel Logo" class="logo" />
+    <h1>Télécharger Sentinel Voice</h1>
+    <div class="desc">Assistant vocal intelligent, sécurisé et moderne.<br>Disponible pour Windows, Mac et Linux.</div>
+    <div class="os-label">Windows</div>
+    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe">Télécharger pour Windows</a>
+    <div class="os-label">Mac</div>
+    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS">Télécharger pour Mac</a>
+    <div class="os-label">Linux</div>
+    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux">Télécharger pour Linux</a>
+    <a class="github-link" href="https://github.com/hassan312-god/Sentinel" target="_blank">Voir le projet sur GitHub</a>
+  </div>
+</body>
+</html> 
