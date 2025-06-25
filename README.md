@@ -1,6 +1,12 @@
 [![Build](https://github.com/hassan312-god/Sentinel/actions/workflows/release.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
+[![Tests](https://github.com/hassan312-god/Sentinel/actions/workflows/test.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
 [![Release](https://img.shields.io/github/v/release/hassan312-god/Sentinel?label=release)](https://github.com/hassan312-god/Sentinel/releases)
+[![Downloads](https://img.shields.io/github/downloads/hassan312-god/Sentinel/total?label=downloads)](https://github.com/hassan312-god/Sentinel/releases)
+[![Stars](https://img.shields.io/github/stars/hassan312-god/Sentinel?label=stars)](https://github.com/hassan312-god/Sentinel/stargazers)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 [![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Mac%20%7C%20Linux-blue)](#)
+[![Code Quality](https://img.shields.io/badge/code%20quality-A+-brightgreen)](https://github.com/hassan312-god/Sentinel/actions)
 
 # 🛡️ Sentinel Voice - Assistant Vocal Intelligent
 

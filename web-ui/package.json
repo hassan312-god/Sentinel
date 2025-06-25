@@ -1,20 +1,28 @@
 {
   "name": "sentinel-voice-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "private": true,
   "description": "Interface moderne pour Sentinel Voice Assistant",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,md,json}"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "framer-motion": "^10.16.4",
-    "styled-components": "^6.0.8",
+    "styled-components": "^5.3.5",
+    "framer-motion": "^6.3.0",
+    "web-vitals": "^2.1.4",
     "react-router-dom": "^6.8.1",
     "lucide-react": "^0.263.1",
     "react-spring": "^9.7.3",
@@ -24,6 +32,12 @@
     "react-query": "^3.39.3",
     "axios": "^1.4.0",
     "socket.io-client": "^4.7.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -39,6 +53,10 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7"
+    "@types/react-dom": "^18.2.7",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
   }
 } 

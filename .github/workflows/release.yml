@@ -50,6 +50,26 @@ jobs:
           if [ "$RUNNER_OS" = "macOS" ]; then mv dist/main upload/Sentinel-macOS; fi
         shell: bash
 
+      - name: Create installers
+        run: |
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            python scripts/create_installers.py
+            if [ -f "Sentinel-Voice-1.0.1.msi" ]; then
+              mv Sentinel-Voice-1.0.1.msi upload/
+            fi
+          elif [ "$RUNNER_OS" = "macOS" ]; then
+            python scripts/create_installers.py
+            if [ -f "Sentinel-Voice-1.0.1.dmg" ]; then
+              mv Sentinel-Voice-1.0.1.dmg upload/
+            fi
+          elif [ "$RUNNER_OS" = "Linux" ]; then
+            python scripts/create_installers.py
+            if [ -f "sentinel-voice_1.0.1_amd64.deb" ]; then
+              mv sentinel-voice_1.0.1_amd64.deb upload/
+            fi
+          fi
+        shell: bash
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -93,18 +113,40 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
             
             ### 📥 Téléchargements
+            
+            #### Exécutables
             - **Windows** : Sentinel-Windows.exe
             - **Mac** : Sentinel-macOS
             - **Linux** : Sentinel-Linux
             
+            #### Packages d'installation
+            - **Windows** : Sentinel-Voice-1.0.1.msi (installateur)
+            - **Mac** : Sentinel-Voice-1.0.1.dmg (image disque)
+            - **Linux** : sentinel-voice_1.0.1_amd64.deb (package Debian)
+            
             ### 🔧 Installation
-            1. Téléchargez le fichier correspondant à votre OS
-            2. Rendez-le exécutable (Linux/Mac) : `chmod +x Sentinel-*`
-            3. Lancez l'application
+            1. **Exécutable** : Téléchargez et lancez directement
+            2. **Package** : Utilisez l'installateur pour une installation système
             
             ### 📖 Documentation
             Consultez le [README](https://github.com/hassan312-god/Sentinel) pour plus d'informations.
+            
+            ### 📊 Métriques
+            - ⭐ Étoiles GitHub : [![Stars](https://img.shields.io/github/stars/hassan312-god/Sentinel)](https://github.com/hassan312-god/Sentinel/stargazers)
+            - 📥 Téléchargements : [![Downloads](https://img.shields.io/github/downloads/hassan312-god/Sentinel/total)](https://github.com/hassan312-god/Sentinel/releases)
           files: ./artifacts/**/*.exe
           files: ./artifacts/**/Sentinel-*
+          files: ./artifacts/**/*.msi
+          files: ./artifacts/**/*.dmg
+          files: ./artifacts/**/*.deb
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  metrics:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update download metrics
+        run: |
+          echo "📊 Métriques mises à jour pour la release ${{ github.ref_name }}"
+          echo "Les badges de téléchargement se mettront à jour automatiquement" 

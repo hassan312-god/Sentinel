@@ -1,99 +1,335 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Télécharger Sentinel Voice</title>
-  <link rel="icon" type="image/x-icon" href="../web-ui/public/assets/icons/favicon.ico">
-  <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: rgba(0,0,0,0.4);
-      border-radius: 20px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      text-align: center;
-      max-width: 400px;
-      margin: 2rem;
-    }
-    .logo {
-      width: 64px;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .desc {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: #e0e0e0;
-    }
-    .download-btn {
-      display: block;
-      width: 100%;
-      margin: 0.5rem 0;
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(90deg, #FF6B35, #E55A2B);
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      text-decoration: none;
-    }
-    .download-btn:hover {
-      background: linear-gradient(90deg, #E55A2B, #FF6B35);
-      transform: translateY(-2px) scale(1.03);
-    }
-    .os-label {
-      font-size: 0.95rem;
-      color: #bdbdbd;
-      margin-bottom: 0.2rem;
-    }
-    .github-link {
-      color: #fff;
-      opacity: 0.7;
-      font-size: 0.95rem;
-      margin-top: 1.5rem;
-      display: inline-block;
-      text-decoration: underline;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1rem 0.5rem;
-        max-width: 95vw;
-      }
-      h1 {
-        font-size: 1.3rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Télécharger Sentinel Voice - Assistant Vocal Intelligent</title>
+    <link rel="icon" type="image/x-icon" href="../web-ui/public/assets/icons/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FF6B35, #E55A2B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .version-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .version-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .version-btn.active {
+            background: linear-gradient(45deg, #FF6B35, #E55A2B);
+            border-color: #FF6B35;
+        }
+
+        .version-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .os-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .os-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .os-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #FF6B35, #E55A2B);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .file-size {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #FF6B35;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FF6B35;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .version-selector {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <img src="../web-ui/public/assets/icons/sentinel-logo.ico" alt="Sentinel Logo" class="logo" />
-    <h1>Télécharger Sentinel Voice</h1>
-    <div class="desc">Assistant vocal intelligent, sécurisé et moderne.<br>Disponible pour Windows, Mac et Linux.</div>
-    <div class="os-label">Windows</div>
-    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe">Télécharger pour Windows</a>
-    <div class="os-label">Mac</div>
-    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS">Télécharger pour Mac</a>
-    <div class="os-label">Linux</div>
-    <a class="download-btn" href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux">Télécharger pour Linux</a>
-    <a class="github-link" href="https://github.com/hassan312-god/Sentinel" target="_blank">Voir le projet sur GitHub</a>
-  </div>
+    <div class="container">
+        <div class="header">
+            <img src="../web-ui/public/assets/icons/sentinel-logo.ico" alt="Sentinel Logo" class="logo">
+            <h1 class="title">Télécharger Sentinel Voice</h1>
+            <p class="subtitle">Assistant vocal intelligent, sécurisé et moderne pour Windows, Mac et Linux</p>
+            
+            <div class="version-selector">
+                <button class="version-btn active" onclick="showVersion('latest')">Dernière Version (1.0.1)</button>
+                <button class="version-btn" onclick="showVersion('1.0.0')">1.0.0</button>
+                <button class="version-btn" onclick="showVersion('0.9.0')">0.9.0</button>
+            </div>
+        </div>
+
+        <div class="downloads-grid" id="latest-version">
+            <div class="download-card">
+                <div class="os-icon">🪟</div>
+                <h3 class="os-name">Windows</h3>
+                <p class="os-desc">Windows 10/11 (x64)</p>
+                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Windows.exe" class="download-btn">
+                    Télécharger pour Windows
+                </a>
+                <div class="file-size">~45 MB</div>
+            </div>
+
+            <div class="download-card">
+                <div class="os-icon">🍎</div>
+                <h3 class="os-name">macOS</h3>
+                <p class="os-desc">macOS 10.15+ (Universal)</p>
+                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-macOS" class="download-btn">
+                    Télécharger pour macOS
+                </a>
+                <div class="file-size">~42 MB</div>
+            </div>
+
+            <div class="download-card">
+                <div class="os-icon">🐧</div>
+                <h3 class="os-name">Linux</h3>
+                <p class="os-desc">Ubuntu 18.04+, Debian 10+</p>
+                <a href="https://github.com/hassan312-god/Sentinel/releases/latest/download/Sentinel-Linux" class="download-btn">
+                    Télécharger pour Linux
+                </a>
+                <div class="file-size">~38 MB</div>
+            </div>
+        </div>
+
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value" id="downloads">1.2k</div>
+                <div class="metric-label">Téléchargements</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="stars">⭐ 15</div>
+                <div class="metric-label">Étoiles GitHub</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="releases">3</div>
+                <div class="metric-label">Releases</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/hassan312-god/Sentinel" class="footer-link" target="_blank">GitHub</a>
+                <a href="https://github.com/hassan312-god/Sentinel/releases" class="footer-link" target="_blank">Releases</a>
+                <a href="https://github.com/hassan312-god/Sentinel/issues" class="footer-link" target="_blank">Issues</a>
+                <a href="https://github.com/hassan312-god/Sentinel/blob/main/README.md" class="footer-link" target="_blank">Documentation</a>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem;">
+                © 2025 Sentinel Voice - Assistant vocal intelligent et sécurisé
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showVersion(version) {
+            // Mettre à jour les boutons actifs
+            document.querySelectorAll('.version-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Ici on pourrait charger les liens pour différentes versions
+            console.log('Version sélectionnée:', version);
+        }
+
+        // Animation des métriques
+        function animateMetrics() {
+            const metrics = document.querySelectorAll('.metric-value');
+            metrics.forEach(metric => {
+                const finalValue = metric.textContent;
+                let currentValue = 0;
+                const increment = parseInt(finalValue.replace(/\D/g, '')) / 50;
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= parseInt(finalValue.replace(/\D/g, ''))) {
+                        metric.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        metric.textContent = Math.floor(currentValue) + (finalValue.includes('k') ? 'k' : '');
+                    }
+                }, 50);
+            });
+        }
+
+        // Lancer l'animation au chargement
+        window.addEventListener('load', animateMetrics);
+    </script>
 </body>
 </html> 
