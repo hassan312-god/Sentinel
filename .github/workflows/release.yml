@@ -135,11 +135,12 @@ jobs:
             - ⭐ Étoiles GitHub : [![Stars](https://img.shields.io/github/stars/hassan312-god/Sentinel)](https://github.com/hassan312-god/Sentinel/stargazers)
             - 📥 Téléchargements : [![Downloads](https://img.shields.io/github/downloads/hassan312-god/Sentinel/total)](https://github.com/hassan312-god/Sentinel/releases)
           files: |
-            ./artifacts/**/*.exe
-            ./artifacts/**/Sentinel-*
-            ./artifacts/**/*.msi
-            ./artifacts/**/*.dmg
-            ./artifacts/**/*.deb
+            ./artifacts/Sentinel-Windows.exe
+            ./artifacts/Sentinel-macOS
+            ./artifacts/Sentinel-Linux
+            ./artifacts/Sentinel-Voice-1.0.1.msi
+            ./artifacts/Sentinel-Voice-1.0.1.dmg
+            ./artifacts/sentinel-voice_1.0.1_amd64.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -147,7 +148,46 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - name: Update download metrics
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
         run: |
-          echo "📊 Métriques mises à jour pour la release ${{ github.ref_name }}"
-          echo "Les badges de téléchargement se mettront à jour automatiquement" 
+          pip install -r requirements.txt
+      - name: Collect metrics
+        run: |
+          python scripts/metrics.py --save
+      - name: Upload metrics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: metrics.json
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Python tests
+        run: pytest
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install Node.js dependencies
+        run: |
+          cd web-ui
+          npm install
+      - name: Run React tests
+        run: |
+          cd web-ui
+          npm test -- --watchAll=false 

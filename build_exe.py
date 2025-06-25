@@ -19,6 +19,9 @@ MAIN_SCRIPT = 'main.py'
 def build_executable(test_only=False):
     """Construit l'exécutable avec PyInstaller"""
     
+    exe_name = 'Sentinel-Windows' if platform.system() == 'Windows' else (
+        'Sentinel-macOS' if platform.system() == 'Darwin' else 'Sentinel-Linux')
+
     # Construction de la commande PyInstaller
     add_data = []
     for d in INCLUDE_DIRS:
@@ -36,6 +39,7 @@ def build_executable(test_only=False):
         'pyinstaller',
         '--onefile',
         '--noconsole',
+        '--name', exe_name,
         *add_data_args,
         MAIN_SCRIPT
     ]

@@ -1,4 +1,4 @@
-[![Build](https://github.com/hassan312-god/Sentinel/actions/workflows/release.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
+[![Build & Release Sentinel](https://github.com/hassan312-god/Sentinel/actions/workflows/release.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
 [![Tests](https://github.com/hassan312-god/Sentinel/actions/workflows/test.yml/badge.svg)](https://github.com/hassan312-god/Sentinel/actions)
 [![Release](https://img.shields.io/github/v/release/hassan312-god/Sentinel?label=release)](https://github.com/hassan312-god/Sentinel/releases)
 [![Downloads](https://img.shields.io/github/downloads/hassan312-god/Sentinel/total?label=downloads)](https://github.com/hassan312-god/Sentinel/releases)
