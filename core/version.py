@@ -7,7 +7,7 @@ import os
 from datetime import datetime
 
 # Version actuelle
-CURRENT_VERSION = "1.0.0"
+CURRENT_VERSION = "1.0.1"
 
 def get_version():
     """Retourne la version actuelle"""
@@ -67,8 +67,8 @@ def update_version_file(new_version):
     
     # Remplace la version actuelle
     content = re.sub(
-        r'CURRENT_VERSION = "[^"]*"',
-        f'CURRENT_VERSION = "{new_version}"',
+        r'CURRENT_VERSION = "1.0.1"]*"',
+        f'CURRENT_VERSION = "1.0.1"',
         content
     )
     
