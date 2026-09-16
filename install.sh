@@ -36,7 +36,11 @@ fi
 cd web-ui
 if [ ! -d "node_modules" ]; then
     echo -e "${GREEN}Installation des dépendances Node.js...${NC}"
-    npm install
+    if [ -f "package-lock.json" ]; then
+        npm ci --ignore-scripts
+    else
+        npm install
+    fi
 fi
 cd ..
 

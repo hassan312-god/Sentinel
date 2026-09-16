@@ -34,7 +34,11 @@ REM Installation des dépendances Node.js
 cd web-ui
 if not exist node_modules (
     echo Installation des dependances Node.js...
-    npm install
+    if exist package-lock.json (
+        npm ci --ignore-scripts
+    ) else (
+        npm install
+    )
 )
 cd ..
 

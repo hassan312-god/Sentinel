@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: web-ui/package-lock.json
 
       - name: Install Python dependencies
         run: |
@@ -36,7 +38,7 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           cd web-ui
-          npm install
+          npm ci --ignore-scripts
 
       - name: Build executable
         run: |
@@ -183,10 +185,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: web-ui/package-lock.json
       - name: Install Node.js dependencies
         run: |
           cd web-ui
-          npm install
+          npm ci --ignore-scripts
       - name: Run React tests
         run: |
           cd web-ui
