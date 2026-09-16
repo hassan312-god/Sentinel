@@ -64,7 +64,8 @@ jobs:
     - name: Install dependencies
       run: |
         cd web-ui
-        npm ci
+        npm ci --ignore-scripts
+      # Security: Use '--ignore-scripts' to prevent arbitrary code execution during install
 
     - name: Run linter
       run: |

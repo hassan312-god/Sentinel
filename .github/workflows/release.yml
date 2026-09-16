@@ -36,7 +36,11 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           cd web-ui
-          npm install
+          npm ci --ignore-scripts
+        # Security: Use 'npm ci' to install exact versions from package-lock.json
+        # and '--ignore-scripts' to prevent arbitrary code execution during install.
+        # This ensures reproducible builds and prevents supply-chain attacks via
+        # dependency lifecycle scripts or version drift in published release artifacts.
 
       - name: Build executable
         run: |
@@ -186,7 +190,9 @@ jobs:
       - name: Install Node.js dependencies
         run: |
           cd web-ui
-          npm install
+          npm ci --ignore-scripts
+        # Security: Use 'npm ci' to install exact versions from package-lock.json
+        # and '--ignore-scripts' to prevent arbitrary code execution during install.
       - name: Run React tests
         run: |
           cd web-ui
